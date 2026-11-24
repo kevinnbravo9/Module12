@@ -44,11 +44,41 @@ The calculator supports four basic operations:
 
 The application also includes input validation, division-by-zero protection, a web interface, and FastAPI endpoints.
 
-## Module 12 – Polymorphic Calculations
+
+## Module 12 – JWT Authentication and Calculation API
+
+### Authentication
+
+Users can register and log in securely. Passwords are hashed using Argon2.
+
+Successful login returns a JWT access token. Protected endpoints require
+a valid token, and unauthorized requests return HTTP 401.
+
+### Calculation BREAD Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/calculations` | Create a calculation |
+| GET | `/calculations` | Read the user's calculations |
+| GET | `/calculations/{id}` | Read one calculation |
+| PUT | `/calculations/{id}` | Update a calculation |
+| DELETE | `/calculations/{id}` | Delete a calculation |
+
+Calculations are associated with authenticated users. Users cannot
+access or modify calculations belonging to other accounts.
+
+### Module 12 Testing
+
+The new integration tests verify registration, login, JWT authentication,
+calculation operations, validation errors, and user access restrictions.
+
+Local results: **87 tests passed with 94% coverage**.
+
+## Previous Module Features – Polymorphic Calculations
 
 ### SQLAlchemy Models
 
-Module 12 introduces a polymorphic calculation model using SQLAlchemy.
+Module 11 introduced a polymorphic calculation model using SQLAlchemy.
 
 The main `Calculation` class represents calculations stored in the database. Four subclasses represent the different operations:
 
@@ -172,7 +202,7 @@ Run unit and integration tests together:
 python -m pytest tests/unit tests/integration -q
 ```
 
-During local Module 12 verification, 71 unit and integration tests passed with 95% overall code coverage.
+During local Module 12 verification, 87 unit and integration tests passed with 94% overall code coverage.
 
 The integration tests cover calculation operations, polymorphic classes, factory creation, Pydantic validation, division-by-zero protection, the `a` and `b` fields, and database persistence.
 
@@ -213,7 +243,7 @@ The running FastAPI application returned HTTP 200 for:
 
 ## Conclusion
 
-Module 12 helped me understand how polymorphism and the Factory Pattern can be used with SQLAlchemy models.
+Module 12 helped me understand JWT authentication, protected API endpoints, and how to connect calculations to authenticated users.
 
 I also practiced validating calculation data with Pydantic and writing tests to confirm that the calculations work correctly.
 

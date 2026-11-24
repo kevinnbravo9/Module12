@@ -1,22 +1,22 @@
-# FastAPI Calculator – Module 11
+# FastAPI Calculator – Module 12
 
 ## Project Description
 
-This project continues my FastAPI Calculator application from previous modules. In Module 11, I focused on implementing polymorphic relationships, using the Factory Pattern, and validating calculation data with Pydantic.
+This project continues my FastAPI Calculator application from previous modules. In Module 12, I focused on implementing polymorphic relationships, using the Factory Pattern, and validating calculation data with Pydantic.
 
 The application uses FastAPI, SQLAlchemy, and PostgreSQL. It also keeps the secure user management features developed in Module 10.
 
 ## GitHub Repository
 
-https://github.com/kevinnbravo9/Module11
+https://github.com/kevinnbravo9/Module12
 
 ## Docker Hub
 
-https://hub.docker.com/r/kevinbravor99/fastapi-calculator-module11
+https://hub.docker.com/r/kevinbravor99/fastapi-calculator-module12
 
 Docker image:
 
-`kevinbravor99/fastapi-calculator-module11:latest`
+`kevinbravor99/fastapi-calculator-module12:latest`
 
 ## Technologies Used
 
@@ -44,11 +44,11 @@ The calculator supports four basic operations:
 
 The application also includes input validation, division-by-zero protection, a web interface, and FastAPI endpoints.
 
-## Module 11 – Polymorphic Calculations
+## Module 12 – Polymorphic Calculations
 
 ### SQLAlchemy Models
 
-Module 11 introduces a polymorphic calculation model using SQLAlchemy.
+Module 12 introduces a polymorphic calculation model using SQLAlchemy.
 
 The main `Calculation` class represents calculations stored in the database. Four subclasses represent the different operations:
 
@@ -172,7 +172,7 @@ Run unit and integration tests together:
 python -m pytest tests/unit tests/integration -q
 ```
 
-During local Module 11 verification, 71 unit and integration tests passed with 95% overall code coverage.
+During local Module 12 verification, 71 unit and integration tests passed with 95% overall code coverage.
 
 The integration tests cover calculation operations, polymorphic classes, factory creation, Pydantic validation, division-by-zero protection, the `a` and `b` fields, and database persistence.
 
@@ -184,24 +184,24 @@ The GitHub Actions workflow includes three jobs:
 2. Security: Builds the Docker image and scans it using Trivy.
 3. Deploy: Publishes the Docker image to Docker Hub after the required jobs succeed.
 
-The Module 11 workflow successfully completed all three jobs.
+The Module 12 workflow successfully completed all three jobs.
 
 ## Docker Hub Deployment
 
 The published Docker image is available at:
 
-https://hub.docker.com/r/kevinbravor99/fastapi-calculator-module11
+https://hub.docker.com/r/kevinbravor99/fastapi-calculator-module12
 
 Pull the image:
 
 ```bash
-docker pull --platform linux/amd64 kevinbravor99/fastapi-calculator-module11:latest
+docker pull --platform linux/amd64 kevinbravor99/fastapi-calculator-module12:latest
 ```
 
 Run the published image:
 
 ```bash
-docker run -d --name module11_verify --platform linux/amd64 -p 8001:8000 kevinbravor99/fastapi-calculator-module11:latest
+docker run -d --name module12_verify --platform linux/amd64 -p 8001:8000 kevinbravor99/fastapi-calculator-module12:latest
 ```
 
 The published image was downloaded and tested successfully.
@@ -213,7 +213,7 @@ The running FastAPI application returned HTTP 200 for:
 
 ## Conclusion
 
-Module 11 helped me understand how polymorphism and the Factory Pattern can be used with SQLAlchemy models.
+Module 12 helped me understand how polymorphism and the Factory Pattern can be used with SQLAlchemy models.
 
 I also practiced validating calculation data with Pydantic and writing tests to confirm that the calculations work correctly.
 

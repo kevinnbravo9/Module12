@@ -1,0 +1,18 @@
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+.coverage
+# Local database backups
+backups/
+.env
+.venv/
+
+# Temporary backups
+*.backup
+*.bak
+
+# Local secrets
+.env.*
+!.env.example

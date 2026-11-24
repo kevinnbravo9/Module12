@@ -148,6 +148,8 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
+Configure DATABASE_URL and JWT_SECRET_KEY in a local .env file before starting the application. Use a separate PostgreSQL test database for integration tests.
+
 Start FastAPI:
 
 ```bash
@@ -173,6 +175,24 @@ docker compose up -d
 ```
 
 Make sure the required database settings are configured before running integration tests.
+
+
+## Manual Testing with OpenAPI
+
+1. Start PostgreSQL and the FastAPI application.
+2. Open http://localhost:8000/docs.
+3. Register a user using POST /users/register.
+4. Log in using POST /users/login.
+5. Use Authorize with your registered credentials.
+6. Create a calculation using POST /calculations.
+7. Browse calculations using GET /calculations.
+8. Retrieve a calculation using GET /calculations/{id}.
+9. Update it using PUT /calculations/{id}.
+10. Delete it using DELETE /calculations/{id}.
+11. Confirm the deleted calculation returns HTTP 404.
+12. Verify invalid inputs and unauthorized requests return errors.
+
+These checks were completed successfully during manual testing.
 
 ## Automated Testing
 
@@ -231,10 +251,10 @@ docker pull --platform linux/amd64 kevinbravor99/fastapi-calculator-module12:lat
 Run the published image:
 
 ```bash
-docker run -d --name module12_verify --platform linux/amd64 -p 8001:8000 kevinbravor99/fastapi-calculator-module12:latest
+docker run -d --name module12_verify --platform linux/amd64 --env-file .env -p 8012:8000 -e DATABASE_URL=postgresql+psycopg://postgres:postgres@host.docker.internal:5432/module12_db kevinbravor99/fastapi-calculator-module12:latest
 ```
 
-The published image was downloaded and tested successfully.
+The published image was downloaded and tested successfully on port 8012 using Docker Desktop and an existing PostgreSQL database.
 
 The running FastAPI application returned HTTP 200 for:
 
